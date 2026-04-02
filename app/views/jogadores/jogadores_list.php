@@ -55,6 +55,10 @@
             </div>
         </div>
 
+        <div class="mt-4">
+            <a href="<?= URL_BASE ?>/usuarios" class="btn btn-link">Ver Usuários</a>
+        </div>
+
     </div>
 
     <!-- Bootstrap JS -->

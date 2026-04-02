@@ -33,6 +33,12 @@
                         <?php endif; ?>
                     </div>
 
+                    <?php if (isset($_GET['erro']) && strpos($_GET['erro'], (string) ERROR_CODE_USERNAME_EXISTS) !== false): ?>
+                        <div class="alert alert-danger" role="alert">
+                            Erro: Este nome de usuário já está cadastrado!
+                        </div>
+                    <?php endif; ?>
+
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail</label>
                         <input type="email" class="form-control" id="email" name="email" value="<?= $usuario['email'] ?? '' ?>">
@@ -40,6 +46,12 @@
                             <div class="text-danger small"><?= $erros['email'] ?></div>
                         <?php endif; ?>
                     </div>
+
+                    <?php if (isset($_GET['erro']) && strpos($_GET['erro'], (string) ERROR_CODE_EMAIL_EXISTS) !== false): ?>
+                        <div class="alert alert-danger" role="alert">
+                            Erro: Este e-mail já está cadastrado!
+                        </div>
+                    <?php endif; ?>
 
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha <?= isset($usuario['id']) ? '(Preencha apenas se quiser alterar)' : '' ?></label>

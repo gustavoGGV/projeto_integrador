@@ -11,12 +11,15 @@ if (DEV_ENVIRONMENT == true) {
 
 //Configuração do Sistema
 define('APP_NAME', 'Projeto Integrador');
-define('URL_BASE', 'http://localhost:8080');
+define('URL_BASE', 'http://localhost:1644');
 
 //Configurações do Banco de dados
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'db_projeto_integrador');
 
-define('DB_USER', 'root');
-define('DB_PASS', 'bancodedados');
+define('DB_USER', 'custavo');
+define('DB_PASS', 'Sounoob99@');
 
+//Códigos de erro dos forms
+define('ERROR_CODE_USERNAME_EXISTS', 1);
+define('ERROR_CODE_EMAIL_EXISTS', 2);
