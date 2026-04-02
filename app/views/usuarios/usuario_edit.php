@@ -76,50 +76,45 @@
                 <i class="bi bi-arrow-left"></i> Voltar
             </a>
         </div>
+        <div class="card-body">
+            <form action="<?= URL_BASE ?>/usuarios/atualizar" method="post">
+                <!-- Campo oculto para o ID -->
+                <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
 
-        <div class="card shadow-sm col-md-8 mx-auto">
-            <div class="card-body p-4">
-                <form action="<?= URL_BASE ?>/usuarios/<?= isset($usuario['id']) ? 'atualizar' : 'salvar' ?>" method="post">
-                    <?php if (isset($usuario['id'])): ?>
-                        <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
-                    <?php endif; ?>
+                <div class="mb-3">
+                    <label for="nomeUsuario" class="form-label">Nome de Usuário</label>
+                    <input type="text" class="form-control" id="nomeUsuario" name="nomeUsuario" value="<?= $usuario['nomeUsuario'] ?>">
+                </div>
 
-                    <div class="mb-3">
-                        <label for="nomeUsuario" class="form-label">Nome de Usuário</label>
-                        <input type="text" class="form-control" id="nomeUsuario" name="nomeUsuario" value="<?= $usuario['nomeUsuario'] ?? '' ?>">
-                        <?php if (isset($erros['nomeUsuario'])): ?>
-                            <div class="text-danger small"><?= $erros['nomeUsuario'] ?></div>
-                        <?php endif; ?>
+                <?php if (isset($_GET['erro']) && strpos($_GET['erro'], (string) ERROR_CODE_USERNAME_EXISTS) !== false): ?>
+                    <div class="alert alert-danger" role="alert">
+                        Erro: Este nome de usuário já está cadastrado!
                     </div>
+                <?php endif; ?>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="email" name="email" value="<?= $usuario['email'] ?? '' ?>">
-                        <?php if (isset($erros['email'])): ?>
-                            <div class="text-danger small"><?= $erros['email'] ?></div>
-                        <?php endif; ?>
-                    </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<?= $usuario['email'] ?>">
+                </div>
 
-                    <div class="mb-3">
-                        <label for="senha" class="form-label">Senha <?= isset($usuario['id']) ? '(Preencha apenas se quiser alterar)' : '' ?></label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" id="senha" name="senha">
-                            <button class="btn btn-outline-secondary" type="button" id="toggleSenha">
-                                <i class="bi bi-eye" id="iconSenha"></i>
-                            </button>
-                        </div>
-                        <?php if (isset($erros['senha'])): ?>
-                            <div class="text-danger small"><?= $erros['senha'] ?></div>
-                        <?php endif; ?>
+                <?php if (isset($_GET['erro']) && strpos($_GET['erro'], (string) ERROR_CODE_EMAIL_EXISTS) !== false): ?>
+                    <div class="alert alert-danger" role="alert">
+                        Erro: Este e-mail já está cadastrado!
                     </div>
+                <?php endif; ?>
 
-                    <div class="mb-3">
-                        <label for="perfil" class="form-label">Perfil</label>
-                        <select class="form-select" id="perfil" name="perfil">
-                            <option value="user" <?= (isset($usuario['perfil']) && $usuario['perfil'] == 'user') ? 'selected' : '' ?>>Usuário Padrão</option>
-                            <option value="admin" <?= (isset($usuario['perfil']) && $usuario['perfil'] == 'admin') ? 'selected' : '' ?>>Administrador</option>
-                        </select>
-                    </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Nova Senha (Deixe em branco para não alterar)</label>
+                    <input type="password" class="form-control" id="senha" name="senha">
+                </div>
+
+                <div class="mb-3">
+                    <label for="perfil" class="form-label">Perfil de Acesso</label>
+                    <select class="form-select" id="perfil" name="perfil">
+                        <option value="user" <?= $usuario['perfil'] === 'user' ? 'selected' : '' ?>>Usuário Padrão</option>
+                        <option value="admin" <?= $usuario['perfil'] === 'admin' ? 'selected' : '' ?>>Administrador</option>
+                    </select>
+                </div>
 
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary px-4">
