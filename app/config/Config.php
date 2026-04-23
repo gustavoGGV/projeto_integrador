@@ -17,8 +17,8 @@ define('URL_BASE', 'http://localhost:1644');
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'db_projeto_integrador');
 
-define('DB_USER', 'custavo');
-define('DB_PASS', 'Sounoob99@');
+define('DB_USER', '');
+define('DB_PASS', '');
 
 //Códigos de erro dos forms
 define('ERROR_CODE_USERNAME_EXISTS', 1);
