@@ -19,7 +19,13 @@
 
         <!-- TÍTULO + NOVO -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="mb-0">Lista de Jogadores</h2>
+            <div class="d-flex flex-row">
+              <h2 class="mb-0">Lista de Jogadores</h2>
+              <div class="ms-3">
+                  <a href="<?= URL_BASE ?>/usuarios" class="btn btn-link">Ver Usuários</a>
+                  <a href="<?= URL_BASE ?>/gerentes" class="btn btn-link">Ver Gerentes</a>
+              </div>
+            </div>
             <a href="<?= URL_BASE ?>/jogadores/cadastrar" class="btn btn-primary">
                 <i class="bi bi-plus-circle"></i> Novo Jogador
             </a>
@@ -54,11 +60,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="mt-4">
-            <a href="<?= URL_BASE ?>/usuarios" class="btn btn-link">Ver Usuários</a>
-        </div>
-
     </div>
 
     <!-- Bootstrap JS -->

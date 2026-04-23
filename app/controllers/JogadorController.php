@@ -72,7 +72,13 @@ class JogadorController extends Controller
         //print_r($jogador);
         //exit;
 
-        $this->service->saveJogador($jogador);
+        $saved = $this->service->saveJogador($jogador);
+
+        if ($saved) {
+            $this->redirect(URL_BASE . '/jogadores');
+        } else {
+            $this->redirect(URL_BASE . '/jogadores/cadastrar');
+        }
     }
 
     public function redirecionarTeste()
